@@ -1,0 +1,5 @@
+---
+
+ansible_user: root
+ansible_ssh_pass: password
+hyperstore_installer_node: "{{ ansible_play_hosts | intersect(groups['installer-node']) | first }}"

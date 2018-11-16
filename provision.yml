@@ -1,0 +1,30 @@
+---
+
+# Cloudian main
+
+- hosts: s3_admin
+  vars:
+    admin_endpoint: https://s3-admin.demo1.cloudian.eu:19443
+    admin_username: sysadmin
+    admin_password: public
+    cmc_groups:
+      - groupA
+      - groupB
+    cmc_users:
+      user1:
+        - group: group1
+        - cmc_pass: public
+        - bucket: bucket1
+      user2:
+        - group: group1
+        - cmc_pass: public
+        - bucket: bucket2
+    policies:
+      ec3_2:
+        default: True
+      rf=3:
+        default: False
+  roles:
+    - group
+    - user
+    - policy

@@ -1,0 +1,37 @@
+# static inventory and group inheritance
+
+# Main host list. Either:
+# - set these manually OR
+# - Leave empty and use another, dynamic inventory combined with this topology inventory file
+#
+
+[s3_admin]
+cloudian-node1
+
+[cloudian]
+cloudian-node1 ansible_host=10.1.10.11
+cloudian-node2 ansible_host=10.1.10.12
+cloudian-node3 ansible_host=10.1.10.13
+cloudian-node4 ansible_host=10.1.10.14
+cloudian-node5 ansible_host=10.1.10.15
+cloudian-node6 ansible_host=10.1.10.16
+
+[installer-node]
+cloudian-node1
+
+[DC1]
+cloudian-node1
+cloudian-node2
+cloudian-node3
+
+[DC2]
+cloudian-node4
+cloudian-node5
+cloudian-node6
+
+[region-1:children]
+DC1
+DC2
+
+[cloudian:children]
+region-1

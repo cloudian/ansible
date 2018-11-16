@@ -1,0 +1,32 @@
+---
+
+- name: GET Groups
+  uri:
+    url: "{{ admin_endpoint }}/group/list"
+    method: GET
+    user: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    force_basic_auth: True
+    validate_certs: No
+    status_code: 200
+    return_content: yes
+  register: grouplist
+
+# TODO: Need to parse grouplist and make Create Groups conditional
+# based on whether the group exists or not
+# - debug: var=grouplist
+
+- name: Create Groups
+  uri:
+    url: "{{ admin_endpoint }}/group"
+    method: PUT
+    user: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    force_basic_auth: True
+    body_format: json
+    body: "{{ lookup('template','group.j2') }}"
+    headers:
+      Content-Type: "application/json"
+    validate_certs: No
+    status_code: 200
+  with_items: "{{ cmc_groups }}"
