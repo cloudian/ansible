@@ -1,0 +1,7 @@
+---
+
+{%- for item in grouplist.json -%}
+  {%- if item.groupId -%}
+    {{ item.groupId }}
+  {%- endif -%}
+{%- endfor -%}

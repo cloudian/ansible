@@ -12,9 +12,12 @@
     return_content: yes
   register: grouplist
 
-# TODO: Need to parse grouplist and make Create Groups conditional
-# based on whether the group exists or not
-# - debug: var=grouplist
+#- debug: var=grouplist
+
+- set_fact:
+    cmc_groups_all: "{{ lookup('template', './group.yml.j2') }}"
+
+#- debug: var=cmc_groups_all
 
 - name: Create Groups
   uri:
@@ -30,3 +33,4 @@
     validate_certs: No
     status_code: 200
   with_items: "{{ cmc_groups }}"
+  when: item not in cmc_groups_all
