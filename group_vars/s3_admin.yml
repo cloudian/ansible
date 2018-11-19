@@ -2,4 +2,7 @@
 
 ansible_user: root
 ansible_ssh_pass: password
-group_name: newgroup1
+# set s3-admin details either in playbooks, or define here:
+admin_endpoint: https://s3-admin.example.com:19443
+admin_username: sysadmin
+admin_password: public

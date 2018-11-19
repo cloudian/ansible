@@ -1,0 +1,22 @@
+---
+
+# TODO:
+  # * Make idempotent / check if user already exists
+  # * Fetch S3 keys
+  # * Create Bucket(s)
+
+- name: Create Users
+  uri:
+    url: "{{ admin_endpoint }}/user"
+    method: PUT
+    user: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    force_basic_auth: True
+    body_format: json
+    body: "{{ lookup('template','user.j2') }}"
+    headers:
+      Content-Type: "application/json"
+    validate_certs: No
+    status_code: 200
+  loop: "{{ cmc_users | dict2items }}"
+  when: check_user is defined
