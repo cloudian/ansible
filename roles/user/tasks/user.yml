@@ -19,4 +19,3 @@
     validate_certs: No
     status_code: 200
   loop: "{{ cmc_users | dict2items }}"
-  when: check_user is defined
