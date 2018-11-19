@@ -17,5 +17,6 @@
     headers:
       Content-Type: "application/json"
     validate_certs: No
-    status_code: 200
+    # Created = 200, Exists/Conflict = 409
+    status_code: 200, 409
   loop: "{{ cmc_users | dict2items }}"
