@@ -1,0 +1,26 @@
+---
+
+- name: GET S3 keys and create AWS profile
+  uri:
+    url: "{{ admin_endpoint }}/user/credentials/list?userId={{ item.key }}&groupId={{ item.value.group }}"
+    method: GET
+    user: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    force_basic_auth: True
+    body_format: json
+    body: "{{ lookup('template','user.j2') }}"
+    headers:
+      Content-Type: "application/json"
+    validate_certs: No
+    # Created = 200, Exists/Conflict = 409
+    status_code: 200
+    return_content: yes
+  loop: "{{ cmc_users | dict2items }}"
+  register: s3_keys
+
+  #- name: Print S3 keys
+  #debug:
+    #  msg: "{{ s3_keys.results.0.json.0.accessKey }}"
+
+- name: Create AWSCLI credentials file
+  local_action: template src=credentials.j2 dest=credentials

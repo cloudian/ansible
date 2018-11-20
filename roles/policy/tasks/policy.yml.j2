@@ -1,0 +1,7 @@
+---
+
+{%- for item in policylist.json -%}
+  {%- if item.policyName -%}
+    {{ item.policyName }}
+  {%- endif -%}
+{%- endfor -%}

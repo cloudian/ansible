@@ -1,7 +1,7 @@
 # ansible
 Library of Ansible Playbooks and roles for Cloudian
 
-Status: `work in progress`
+Status: `work in progress`/`usable`
 
 ## Install Ansible
 
@@ -15,7 +15,10 @@ Status: `work in progress`
 To run any of the playbooks:
 
 - Until there's a dynamic inventory adjust IP addresses in `inventory/topology`
-- Set S3 endpoint in `group_vars/s3_admin.yml`
-- customize playbook to your needs (eg. edit Users and Groups)
-- eg. run `ansible-playbook provision-groups.yml` to provision defined Groups
-- run `ansible-playbook provision-users.yml` to create some Users etc.
+- Customize playbook to your needs (eg. edit Users, Groups)
+- Eg. run `ansible-playbook provision-groups.yml` to provision defined Groups
+- Run `ansible-playbook provision-users.yml` to create some Users etc.
+- Run `ansible-playbook provision-policy` to create a basic RF=3 Storage Policy
+- Run `ansible-playbook provision-all` to apply all of the above
+
+When creating users, the first users' S3 keys will be stored in a file `credentials` within `cwd`, ready to be used by AWS CLI.

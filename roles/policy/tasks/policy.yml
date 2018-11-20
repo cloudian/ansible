@@ -1,0 +1,34 @@
+---
+
+- name: Check if Policy exists
+  uri:
+    url: "{{ admin_endpoint }}/bppolicy/listpolicy"
+    method: GET
+    user: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    force_basic_auth: True
+    validate_certs: No
+    status_code: 200
+    return_content: yes
+  register: policylist
+
+- set_fact:
+    policies_all: "{{ lookup('template', './policy.yml.j2') }}"
+
+#- debug: var=policies_all
+
+- name: Create Storage Policy
+  uri:
+    url: "{{ admin_endpoint }}/bppolicy"
+    method: PUT
+    user: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    force_basic_auth: True
+    body_format: json
+    body: "{{ lookup('template','policy.j2') }}"
+    headers:
+      Content-Type: "application/json"
+    validate_certs: No
+    status_code: 200
+  loop: "{{ storage_policies | dict2items }}"
+  when: item.key not in policies_all

@@ -1,0 +1,40 @@
+{
+    "compressionType": "NONE",
+    "consistencyLevel": {
+        "metadataR": [
+            "QUORUM"
+        ],
+        "metadataW": [
+            "QUORUM"
+        ],
+        "read": [
+            "QUORUM"
+        ],
+        "readEC": [
+            "QUORUM"
+        ],
+        "write": [
+            "QUORUM"
+        ],
+        "writeEC": [
+            "QUORUM"
+        ],
+        "writeNew": []
+    },
+    "defaultProtectionScheme": "HSFS",
+    "ecscheme": null,
+    "elasticsearchEnabled": false,
+    "encryptionEnabled": false,
+    "encryptionType": "NONE",
+    "groups": [],
+    "policyDescription": "Replication Factor 3 QUORUM",
+    "policyId": "",
+    "policyName": "{{ item.key }}",
+    "region": "{{ cluster.region }}",
+    "replicationScheme": {
+        "DC1": "3"
+    },
+    "sizeThreshold": 0,
+    "status": "ACTIVE",
+    "systemDefault": {{ item.value.default }}
+}

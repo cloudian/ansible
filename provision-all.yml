@@ -6,9 +6,10 @@
   vars:
     # s3-admin details are defined in group_vars/s3_admin.yml
     # alternatively, override those here:
-    # admin_endpoint: https://s3-admin.example.com:19443
     # admin_username: sysadmin
     # admin_password: public
+    cluster:
+      region: eu-1
     cmc_groups:
       - groupA
       - groupB
@@ -25,11 +26,9 @@
         fullname:
         type: User
         bucket: bucket2
-    policies:
-      ec3_2:
+    storage_policies:
+      rf_3:
         default: True
-      rf=3:
-        default: False
   roles:
     - group
     - user

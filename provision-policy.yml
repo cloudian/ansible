@@ -1,6 +1,6 @@
 ---
 
-# Playbook - Groups
+# Playbook - Storage Policy
 
 - hosts: s3_admin
   vars:
@@ -8,8 +8,10 @@
     # alternatively, override those here:
     # admin_username: sysadmin
     # admin_password: public
-    cmc_groups:
-      - groupA
-      - groupB
+    cluster:
+      region: eu-1
+    storage_policies:
+      rf_3:
+        default: True
   roles:
-    - group
+    - policy

@@ -6,7 +6,6 @@
   vars:
     # s3-admin details are defined in group_vars/s3_admin.yml
     # alternatively, override those here:
-    # admin_endpoint: https://s3-admin.example.com:19443
     # admin_username: sysadmin
     # admin_password: public
     cmc_users:
