@@ -1,0 +1,19 @@
+---
+
+#- name: DEBUG
+#  debug:
+#    msg: "user {{ item.key }} using accessKey: {{ s3_keys.results[idx].json.0.accessKey }}"
+#  loop: "{{ cmc_users | dict2items }}"
+#  loop_control:
+#    index_var: idx
+
+- name: Create Buckets
+  aws_s3:
+    bucket: "{{ item.value.bucket }}"
+    mode: create
+    s3_url: "{{ s3_endpoint }}"
+    aws_access_key: "{{ s3_keys.results[idx].json.0.accessKey }}"
+    aws_secret_key: "{{ s3_keys.results[idx].json.0.secretKey }}"
+  loop: "{{ cmc_users | dict2items }}"
+  loop_control:
+    index_var: idx

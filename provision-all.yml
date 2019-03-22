@@ -2,34 +2,37 @@
 
 # Playbook - All
 
-- hosts: s3_admin
+- hosts: cloudian
   vars:
-    # s3-admin details are defined in group_vars/s3_admin.yml
-    # alternatively, override those here:
-    # admin_username: sysadmin
-    # admin_password: public
+    # s3 and s3-admin details are defined
+    # in group_vars/cloudian.yml
     cluster:
       region: eu-1
+
     cmc_groups:
       - groupA
       - groupB
+
     cmc_users:
       user1:
         group: groupA
         cmc_pass: public
-        fullname: My name is Mud
+        fullname: User 1
         type: User
         bucket: bucket1
       user2:
         group: groupB
         cmc_pass: public
-        fullname:
+        fullname: User 2
         type: User
         bucket: bucket2
+
     storage_policies:
       rf_3:
         default: True
+
   roles:
     - group
     - user
     - policy
+    - buckets

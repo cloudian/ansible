@@ -2,14 +2,13 @@
 
 # Playbook - Groups
 
-- hosts: s3_admin
+- hosts: cloudian
   vars:
-    # s3-admin details are defined in group_vars/s3_admin.yml
-    # alternatively, override those here:
-    # admin_username: sysadmin
-    # admin_password: public
+    # s3 and s3-admin details are defined
+    # in group_vars/cloudian.yml
     cmc_groups:
       - groupA
       - groupB
+
   roles:
     - group

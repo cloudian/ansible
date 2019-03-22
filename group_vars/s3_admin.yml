@@ -1,7 +1,0 @@
----
-
-ansible_user: root
-ansible_ssh_pass: password
-admin_endpoint: https://localhost:19443
-admin_username: sysadmin
-admin_password: public

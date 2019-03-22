@@ -2,8 +2,6 @@
 
 # TODO:
   # * Make idempotent / check if user already exists
-  # * Fetch S3 keys
-  # * Create Bucket(s)
 
 - name: Create Users
   uri:

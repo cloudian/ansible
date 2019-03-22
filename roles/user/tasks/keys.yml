@@ -20,7 +20,7 @@
 
   #- name: Print S3 keys
   #debug:
-    #  msg: "{{ s3_keys.results.0.json.0.accessKey }}"
+    #msg: "{{ s3_keys.results.0.json.0.accessKey }}"
 
 - name: Create AWSCLI credentials file
   local_action: template src=credentials.j2 dest=credentials
