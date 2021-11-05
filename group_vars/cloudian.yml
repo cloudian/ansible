@@ -2,8 +2,8 @@
 
 ansible_user: root
 ansible_ssh_pass: password
-s3_endpoint: https://s3-eu-1.demo4.cloudian.eu
-admin_endpoint: https://localhost:19443
+s3_endpoint: http://s3-region.example.com
+admin_endpoint: https://s3-admin.example.com:19443
 admin_username: sysadmin
 admin_password: public
 hyperstore_installer_node: "{{ ansible_play_hosts | intersect(groups['installer-node']) | first }}"

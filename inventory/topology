@@ -3,10 +3,11 @@
 # Main host list. Either:
 # - set these manually OR
 # - Leave empty and use another, dynamic inventory combined with this topology inventory file
-# For S3 and S3-Admin calls only a single node is required
+# For S3 and S3-Admin calls only a single node is required, localhost will typically do as
+# long as it can reach the S3 and Admin endpoints configured in group_vars/cloudian.
 
 [cloudian]
-cloudian-node1 ansible_host=10.254.254.101
+cloudian-node1 ansible_host=127.0.0.1
 
 [installer-node]
 cloudian-node1
