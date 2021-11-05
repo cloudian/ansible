@@ -29,6 +29,7 @@
 
     storage_policies:
       rf_3:
+        rf: 3
         default: True
 
   roles:

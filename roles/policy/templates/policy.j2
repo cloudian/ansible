@@ -27,14 +27,14 @@
     "encryptionEnabled": false,
     "encryptionType": "NONE",
     "groups": [],
-    "policyDescription": "Replication Factor 3 QUORUM",
+    "policyDescription": "Replication Factor {{ [ item.value.rf, 6 ] | min }} QUORUM",
     "policyId": "",
     "policyName": "{{ item.key }}",
     "region": "{{ cluster.region }}",
     "replicationScheme": {
-        "DC1": "3"
+        "DC1": "{{ [ item.value.rf, 6 ] | min }}"
     },
     "sizeThreshold": 0,
     "status": "ACTIVE",
-    "systemDefault": {{ item.value.default }}
+    "systemDefault": {{ item.value.default | default('False') }}
 }
